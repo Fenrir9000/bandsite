@@ -1,0 +1,513 @@
+@use './partials/typography' as *;
+@use './partials/variables' as *;
+@use './partials/mixins' as *;
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+}
+
+.top {
+	background-color: $primary-black;
+	color: $white;
+	list-style-type: none;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	@include tablet {
+		flex-direction: row;
+		align-items: center;
+		height: 80px;
+	}
+
+	&__logo--wrapper {
+		margin-top: 24px;
+		margin-bottom: 12px;
+		@include tablet {
+			margin: 0;
+		}
+	}
+	&__logo {
+		@include font-family-normal;
+		@include font-style(24px, 32px);
+		@include logo-style;
+		margin: 16px;
+		@include tablet {
+			margin: auto $withoutmobile-general-spacing;
+		}
+		@include desktop {
+			margin-left: $desktop-side-spacing;
+			@include font-style(30px, 32px);
+		}
+	}
+	&__nav {
+		display: flex;
+		justify-content: space-between;
+		width: 100%;
+		height: 100%;
+		@include tablet {
+			justify-content: flex-start;
+			align-items: center;
+		}
+		&-item {
+			width: 50%;
+			text-align: center;
+			position: relative;
+			padding-bottom: 16px;
+			border-bottom: 3px solid $primary-black;
+			color: $secondary-mercury;
+			@include tablet {
+				width: 5%;
+				min-width: 80px;
+				height: 100%;
+				margin-left: $withoutmobile-general-spacing;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				padding-bottom: 0;
+			}
+			&--current {
+				border-bottom: 3px solid $white;
+				color: $white;
+			}
+			&-link {
+				@include font-family-normal;
+				width: 100%;
+				&--bold {
+					font-weight: 600;
+				}
+			}
+			&:hover {
+				border-bottom: 3px solid $white;
+				color: $white;
+				animation: color-change 2s ease-in-out 0s infinite alternate;
+			}
+		}
+	}
+}
+
+.bee {
+	background-image: url('../assets/images/hero-bio.jpg');
+	background-size: cover;
+	background-position: center;
+	min-height: 300px;
+	display: flex;
+	align-items: center;
+	position: relative;
+	@include tablet {
+		min-height: 500px;
+	}
+	@include desktop {
+		min-height: 700px;
+	}
+
+	&__title {
+		@include font-family-bold;
+		@include font-style(24px, 32px);
+		@include mobile-side-padding;
+		color: $white;
+		position: relative;
+		z-index: 1;
+		@include tablet {
+			@include font-style(60px, 68px);
+			padding: 0 $withoutmobile-general-spacing;
+		}
+		@include desktop {
+			@include font-style(80px, 68px);
+			padding: $withoutmobile-general-spacing $desktop-side-spacing-title;
+		}
+	}
+
+	&::after {
+		content: '';
+		position: absolute;
+		min-width: 100%;
+		min-height: 100%;
+		background-color: $primary-black;
+		opacity: 0.5;
+	}
+}
+
+.musician {
+	color: $primary-black;
+	&-one {
+		@include mobile-side-padding;
+		@include tablet {
+			@include tablet-side-padding;
+		}
+		@include desktop {
+			padding: 0 $desktop-side-spacing $withoutmobile-general-spacing;
+		}
+	}
+
+	&__title {
+		@include font-family-bold;
+		@include font-style(24px, 32px);
+		margin-top: 0;
+		margin-bottom: 0;
+		padding-top: 24px;
+		padding-bottom: 16px;
+		@include tablet {
+			@include font-style(36px, 44px);
+			padding-top: 48px;
+			padding-bottom: $withoutmobile-general-spacing;
+		}
+	}
+
+	&__subtitle {
+		@include font-family-bold;
+		@include font-style(14px, 22px);
+		margin: 0;
+		@include tablet {
+			@include tablet-side-padding;
+			@include font-style(24px, 32px);
+			width: 100%;
+			padding-bottom: $withoutmobile-general-spacing;
+		}
+		@include desktop {
+			padding: 0 80px;
+			padding-bottom: $withoutmobile-general-spacing;
+		}
+	}
+
+	&__img {
+		height: 250px;
+		overflow: hidden;
+		background-image: url('../assets/images/band.jpg');
+		background-size: cover;
+		background-position: center;
+		position: relative;
+		@include tablet {
+			height: 450px;
+			margin: 0 $withoutmobile-general-spacing;
+		}
+		@include desktop {
+			margin: 0 80px;
+		}
+	}
+
+	&__quote {
+		@include font-family-bold;
+		@include font-style(14px, 22px);
+		@include tablet {
+			@include font-style(24px, 32px);
+			margin: 0 $withoutmobile-general-spacing;
+			padding-top: $withoutmobile-general-spacing;
+			padding-bottom: $withoutmobile-general-spacing;
+
+			@include desktop {
+				margin: 0 80px;
+				@include font-style(35px, 40px);
+			}
+			&--size {
+				@include tablet {
+					font-size: 1.5rem;
+					padding: 0;
+				}
+			}
+		}
+	}
+
+	&-two {
+		@include mobile-side-padding;
+		@include tablet {
+			@include tablet-side-padding;
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-between;
+			padding-top: 48px;
+			padding-bottom: $withoutmobile-general-spacing;
+		}
+		@include desktop {
+			padding: $withoutmobile-general-spacing $desktop-side-spacing;
+		}
+	}
+
+	&__content {
+		@include font-family-normal;
+		@include font-style(13px, 18px);
+		@include tablet {
+			@include font-style(14px, 22px);
+			width: 49%;
+			margin-top: 0;
+			margin-bottom: 0;
+			padding-right: 0;
+			padding-left: $withoutmobile-general-spacing;
+			@include desktop {
+				padding-left: 80px;
+				@include font-style(20px, 30px);
+			}
+		}
+		&--paraTwo {
+			@include tablet {
+				padding-left: 0;
+				padding-right: 36px;
+			}
+			@include desktop {
+				padding-right: 80px;
+				@include font-style(20px, 30px);
+			}
+		}
+	}
+}
+
+.photo {
+	@include mobile-side-padding;
+	color: $primary-black;
+	background-color: $secondary-alabaster;
+	display: flex;
+	flex-direction: column;
+	@include tablet {
+		padding: 0;
+	}
+
+	&-wrapper {
+		@include tablet {
+			@include tablet-side-padding;
+			padding-bottom: 36px;
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-between;
+		}
+		@include desktop {
+			padding: $withoutmobile-general-spacing $desktop-side-spacing;
+		}
+	}
+
+	&__title {
+		@include font-family-bold;
+		@include font-style(24px, 32px);
+		margin-top: 0;
+		margin-bottom: 0;
+		padding-top: 24px;
+		padding-bottom: 16px;
+		@include tablet {
+			@include tablet-side-padding;
+			@include font-style(36px, 44px);
+			width: 100%;
+			padding-top: 48px;
+			padding-bottom: $withoutmobile-general-spacing;
+		}
+		@include desktop {
+			padding: 48px $desktop-side-spacing 0px;
+			margin-bottom: 0;
+		}
+	}
+
+	&__image {
+		max-width: 100%;
+		margin-bottom: 16px;
+		filter: grayscale(100%);
+		transition: filter 1s;
+		@include tablet {
+			max-width: 32%;
+			padding-bottom: 2%;
+			margin-bottom: 0;
+		}
+		&--bottom {
+			@include tablet {
+				padding-bottom: 0;
+			}
+		}
+		&:hover {
+			filter: grayscale(0%);
+		}
+	}
+}
+
+.info {
+	@include mobile-side-padding;
+	color: white;
+	background-color: $primary-black;
+	padding-top: 16px;
+	padding-bottom: 16px;
+	@include tablet {
+		padding: 48px $withoutmobile-general-spacing $withoutmobile-general-spacing;
+	}
+	@include desktop {
+		padding: $withoutmobile-general-spacing $desktop-side-spacing;
+		margin: 0 auto;
+	}
+
+	&-containerone {
+		@include tablet {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			@include desktop {
+			}
+
+			&-left {
+				@include tablet {
+					display: flex;
+					justify-content: flex-start;
+				}
+			}
+		}
+	}
+	&__header {
+		@include font-family-bold;
+		@include font-style(24px, 32px);
+		margin-top: 0;
+		@include tablet {
+			@include font-style(36px, 44px);
+			width: 207px;
+			display: flex;
+			margin-bottom: 0;
+			align-items: center;
+		}
+		@include desktop {
+			width: 400px;
+		}
+	}
+
+	&-icons {
+		@include tablet {
+			padding-left: $withoutmobile-general-spacing;
+			display: flex;
+			align-items: center;
+		}
+		@include desktop {
+			position: relative;
+			left: 240px;
+			bottom: 30px;
+		}
+		&__image {
+			margin-right: 16px;
+			@include tablet {
+				margin-right: $withoutmobile-general-spacing;
+			}
+			@include desktop {
+				width: 25px;
+				height: 25px;
+			}
+		}
+	}
+
+	&-containertwo {
+		@include tablet {
+			display: flex;
+			width: 100%;
+			justify-content: flex-start;
+		}
+	}
+
+	&-contacts {
+		@include tablet {
+			display: flex;
+			flex-wrap: wrap;
+			flex-direction: column;
+			min-width: 207px;
+			padding: $withoutmobile-general-spacing 0;
+		}
+		@include desktop {
+			width: 0;
+			min-width: 407px;
+		}
+
+		&__name {
+			@include font-family-bold;
+			@include font-style(14px, 22px);
+			margin: 16px 0 0;
+			@include tablet {
+				margin: 0;
+			}
+			@include desktop {
+				@include font-style(17px, 25px);
+			}
+		}
+		&__company {
+			@include font-family-bold;
+			@include font-style(14px, 22px);
+			margin: 0 0 16px;
+			@include tablet {
+				margin-bottom: $withoutmobile-general-spacing;
+			}
+			@include desktop {
+				@include font-style(17px, 25px);
+			}
+		}
+		&__info {
+			@include font-family-normal;
+			@include font-style(13px, 18px);
+			margin: 0;
+			@include tablet {
+				@include font-style(14px, 20px);
+			}
+			@include desktop {
+				@include font-style(17px, 25px);
+			}
+		}
+		&__email {
+			@include font-family-normal;
+			@include font-style(13px, 18px);
+			display: block;
+			margin: 16px 0;
+			text-decoration: none;
+			color: $white;
+			@include tablet {
+				margin-top: $withoutmobile-general-spacing;
+				@include font-style(14px, 20px);
+			}
+			@include desktop {
+				@include font-style(17px, 25px);
+			}
+		}
+		&--padding {
+			@include tablet {
+				margin-left: $withoutmobile-general-spacing;
+			}
+		}
+	}
+	&__logo {
+		@include font-family-normal;
+		@include logo-style;
+		@include font-style(24px, 32px);
+		display: block;
+		margin-top: 64px;
+		@include tablet {
+			margin-top: 0;
+			display: none;
+		}
+		&-hidden {
+			display: none;
+			@include tablet {
+				@include font-family-normal;
+				@include logo-style;
+				@include font-style(24px, 32px);
+				display: block;
+				align-self: center;
+			}
+		}
+	}
+
+	&__copyright {
+		@include font-family-normal;
+		@include font-style(13px, 18px);
+		margin-bottom: 0;
+		@include tablet {
+			@include font-style(14px, 20px);
+			width: 100%;
+		}
+		@include desktop {
+			justify-content: flex-start;
+			@include font-style(20px, 20px);
+		}
+	}
+}
+
+@keyframes color-change {
+	0% {
+		color: paleturquoise;
+	}
+	50% {
+		color: magenta;
+	}
+	100% {
+		color: paleturquoise;
+	}
+}
