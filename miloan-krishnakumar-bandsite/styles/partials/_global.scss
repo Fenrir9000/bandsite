@@ -1,0 +1,285 @@
+* {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+}
+
+input::placeholder {
+	@include font-family-normal;
+	color: $primary-black;
+}
+
+.top {
+	background-color: $primary-black;
+	color: $white;
+	list-style-type: none;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	@include tablet {
+		flex-direction: row;
+		align-items: center;
+		height: 80px;
+	}
+
+	&__logo--wrapper {
+		margin-top: 24px;
+		margin-bottom: 12px;
+		@include tablet {
+			margin: auto $withoutmobile-general-spacing;
+		}
+		@include desktop {
+			margin-left: $desktop-side-spacing;
+		}
+	}
+	&__logo {
+		@include font-family-normal;
+		@include font-style(24px, 32px);
+		@include logo-style;
+	}
+	&__nav {
+		display: flex;
+		justify-content: space-between;
+		width: 100%;
+		height: 100%;
+		margin: 0;
+		padding-left: 0;
+		list-style-type: none;
+		@include tablet {
+			justify-content: flex-start;
+			align-items: center;
+		}
+		&-item {
+			width: 50%;
+			text-align: center;
+			position: relative;
+			padding-bottom: 16px;
+			border-bottom: 3px solid $primary-black;
+			color: $secondary-mercury;
+			@include tablet {
+				width: 5%;
+				min-width: 80px;
+				height: 100%;
+				margin-left: $withoutmobile-general-spacing;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				padding-bottom: 0;
+			}
+			&--current {
+				border-bottom: 3px solid $white;
+				color: $white;
+			}
+			&-link {
+				@include font-family-normal;
+				width: 100%;
+				color: $white;
+				text-decoration: none;
+				&--bold {
+					font-weight: 600;
+				}
+			}
+			&:hover {
+				border-bottom: 3px solid $white;
+				color: $white;
+				animation: color-change 2s ease-in-out 0s infinite alternate;
+			}
+		}
+	}
+}
+
+.info {
+	@include mobile-side-padding;
+	color: white;
+	background-color: $primary-black;
+	padding-top: 16px;
+	padding-bottom: 16px;
+	@include tablet {
+		padding: 48px $withoutmobile-general-spacing $withoutmobile-general-spacing;
+	}
+	@include desktop {
+		padding: $withoutmobile-general-spacing $desktop-side-spacing;
+		margin: 0 auto;
+	}
+
+	&-containerone {
+		@include tablet {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			@include desktop {
+			}
+
+			&-left {
+				@include tablet {
+					display: flex;
+					justify-content: flex-start;
+				}
+			}
+		}
+	}
+	&__header {
+		@include font-family-bold;
+		@include font-style(24px, 32px);
+		margin-top: 0;
+		@include tablet {
+			@include font-style(36px, 44px);
+			width: 207px;
+			display: flex;
+			margin-bottom: 0;
+			align-items: center;
+		}
+		@include desktop {
+			width: 400px;
+		}
+	}
+
+	&-icons {
+		@include tablet {
+			padding-left: $withoutmobile-general-spacing;
+			display: flex;
+			align-items: center;
+		}
+		@include desktop {
+			position: relative;
+			left: 240px;
+			bottom: 30px;
+		}
+		&__image {
+			margin-right: 16px;
+			@include tablet {
+				margin-right: $withoutmobile-general-spacing;
+			}
+			@include desktop {
+				width: 25px;
+				height: 25px;
+			}
+		}
+	}
+
+	&-containertwo {
+		@include tablet {
+			display: flex;
+			width: 100%;
+			justify-content: flex-start;
+		}
+	}
+
+	&-contacts {
+		@include tablet {
+			display: flex;
+			flex-wrap: wrap;
+			flex-direction: column;
+			min-width: 207px;
+			padding: $withoutmobile-general-spacing 0;
+		}
+		@include desktop {
+			width: 0;
+			min-width: 407px;
+		}
+
+		&__name {
+			@include font-family-bold;
+			@include font-style(14px, 22px);
+			margin: 16px 0 0;
+			@include tablet {
+				margin: 0;
+			}
+			@include desktop {
+				@include font-style(17px, 25px);
+			}
+		}
+		&__company {
+			@include font-family-bold;
+			@include font-style(14px, 22px);
+			margin: 0 0 16px;
+			@include tablet {
+				margin-bottom: $withoutmobile-general-spacing;
+			}
+			@include desktop {
+				@include font-style(17px, 25px);
+			}
+		}
+		&__info {
+			@include font-family-normal;
+			@include font-style(13px, 18px);
+			margin: 0;
+			@include tablet {
+				@include font-style(14px, 20px);
+			}
+			@include desktop {
+				@include font-style(17px, 25px);
+			}
+		}
+		&__email {
+			@include font-family-normal;
+			@include font-style(13px, 18px);
+			display: block;
+			margin: 16px 0;
+			text-decoration: none;
+			color: $white;
+			@include tablet {
+				margin-top: $withoutmobile-general-spacing;
+				@include font-style(14px, 20px);
+			}
+			@include desktop {
+				@include font-style(17px, 25px);
+			}
+		}
+		&--padding {
+			@include tablet {
+				margin-left: $withoutmobile-general-spacing;
+			}
+		}
+	}
+	&__logo {
+		@include font-family-normal;
+		@include logo-style;
+		@include font-style(24px, 32px);
+		display: block;
+		margin-top: 64px;
+		@include tablet {
+			margin-top: 0;
+			display: none;
+		}
+		&-hidden {
+			display: none;
+			@include tablet {
+				@include font-family-normal;
+				@include logo-style;
+				@include font-style(24px, 32px);
+				display: block;
+				align-self: center;
+			}
+		}
+	}
+
+	&__copyright {
+		@include font-family-normal;
+		@include font-style(13px, 18px);
+		margin-bottom: 0;
+		@include tablet {
+			@include font-style(14px, 20px);
+			width: 100%;
+		}
+		@include desktop {
+			justify-content: flex-start;
+			@include font-style(20px, 20px);
+		}
+	}
+}
+
+@keyframes color-change {
+	0% {
+		color: paleturquoise;
+	}
+	50% {
+		color: magenta;
+	}
+	100% {
+		color: paleturquoise;
+	}
+}

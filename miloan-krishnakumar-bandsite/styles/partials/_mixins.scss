@@ -29,6 +29,11 @@
 	@content;
 }
 
+@mixin font-tablet-body-style {
+	@include font-style(14px, 22px);
+	@content;
+}
+
 @mixin logo-style {
 	max-height: 20px;
 	max-width: 120px;
@@ -56,4 +61,17 @@
 	font-weight: 700;
 	font-style: normal;
 	@content;
+}
+
+@mixin avatarMobile {
+	height: 36px;
+	width: 36px;
+	border-radius: 50%;
+	@content;
+}
+
+@mixin avatarLarge {
+	border-radius: 50%;
+	height: 48px;
+	width: 48px;
 }

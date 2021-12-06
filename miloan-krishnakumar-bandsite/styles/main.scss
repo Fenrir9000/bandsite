@@ -2,93 +2,7 @@
 @use './partials/variables' as *;
 @use './partials/mixins' as *;
 
-* {
-	box-sizing: border-box;
-}
-
-body {
-	margin: 0;
-}
-
-.top {
-	background-color: $primary-black;
-	color: $white;
-	list-style-type: none;
-	padding: 0;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	@include tablet {
-		flex-direction: row;
-		align-items: center;
-		height: 80px;
-	}
-
-	&__logo--wrapper {
-		margin-top: 24px;
-		margin-bottom: 12px;
-		@include tablet {
-			margin: 0;
-		}
-	}
-	&__logo {
-		@include font-family-normal;
-		@include font-style(24px, 32px);
-		@include logo-style;
-		margin: 16px;
-		@include tablet {
-			margin: auto $withoutmobile-general-spacing;
-		}
-		@include desktop {
-			margin-left: $desktop-side-spacing;
-			@include font-style(30px, 32px);
-		}
-	}
-	&__nav {
-		display: flex;
-		justify-content: space-between;
-		width: 100%;
-		height: 100%;
-		@include tablet {
-			justify-content: flex-start;
-			align-items: center;
-		}
-		&-item {
-			width: 50%;
-			text-align: center;
-			position: relative;
-			padding-bottom: 16px;
-			border-bottom: 3px solid $primary-black;
-			color: $secondary-mercury;
-			@include tablet {
-				width: 5%;
-				min-width: 80px;
-				height: 100%;
-				margin-left: $withoutmobile-general-spacing;
-				display: flex;
-				align-items: center;
-				justify-content: center;
-				padding-bottom: 0;
-			}
-			&--current {
-				border-bottom: 3px solid $white;
-				color: $white;
-			}
-			&-link {
-				@include font-family-normal;
-				width: 100%;
-				&--bold {
-					font-weight: 600;
-				}
-			}
-			&:hover {
-				border-bottom: 3px solid $white;
-				color: $white;
-				animation: color-change 2s ease-in-out 0s infinite alternate;
-			}
-		}
-	}
-}
+@import './partials/global';
 
 .bee {
 	background-image: url('../assets/images/hero-bio.jpg');
@@ -319,195 +233,196 @@ body {
 	}
 }
 
-.info {
-	@include mobile-side-padding;
-	color: white;
-	background-color: $primary-black;
-	padding-top: 16px;
-	padding-bottom: 16px;
+.comments {
+	margin: 0 $addsixteen;
+
 	@include tablet {
-		padding: 48px $withoutmobile-general-spacing $withoutmobile-general-spacing;
+		margin: 0 $addsixteen * 2;
 	}
 	@include desktop {
-		padding: $withoutmobile-general-spacing $desktop-side-spacing;
-		margin: 0 auto;
+		margin: 0 $addsixteen * 8;
 	}
-
-	&-containerone {
+	&__title {
+		@include font-family-bold;
+		@include font-style(24px, 32px);
 		@include tablet {
+			@include font-style(36px, 32px);
+		}
+	}
+	&-form {
+		position: relative;
+		transition: transform 0.5s;
+
+		@include tablet {
+			margin-right: $addsixteen * 2;
+		}
+		@include desktop {
+			margin-right: 0;
+		}
+
+		&:focus-within {
+			transform: scale(1.03);
+		}
+		&__avatar {
+			@include avatarMobile {
+				background-image: url(../assets/Images/Mohan-muruge.jpg);
+				background-position: center;
+				background-size: cover;
+				position: absolute;
+				top: $addsixteen * 2;
+				@include tablet {
+					left: $addsixteen * 4;
+				}
+				@include desktop {
+					left: $addsixteen * 15;
+				}
+			}
+		}
+		&-wrapper {
 			display: flex;
-			justify-content: space-between;
-			align-items: center;
+			flex-direction: column;
+			margin: 0 0 $addsixteen $addsixteen * 3;
+			@include tablet {
+				margin: 0 $addsixteen * 2 $addsixteen $addsixteen * 7;
+			}
 			@include desktop {
+				margin: 0 $addsixteen * 15 $addsixteen $addsixteen * 18;
 			}
 
-			&-left {
+			&__label {
+				color: $primary-silver;
+				@include font-family-bold;
+				@include font-style(12px, 20px);
+				margin-top: $addsixteen;
+				margin-bottom: 4px;
+			}
+
+			&__name {
+				min-height: 36px;
+				border-radius: 4px;
+				padding: 12px;
+				background-color: $secondary-alabaster;
+				border: 1px solid $secondary-mercury;
 				@include tablet {
-					display: flex;
-					justify-content: flex-start;
+					padding: 16px;
+					min-height: 48px;
+				}
+				&:focus {
+					outline: none;
+					border: 1px solid $primary-black;
+				}
+
+				&:invalid {
+					outline: none;
+					border: 1px solid #d22d2d;
+				}
+			}
+			&__comment {
+				height: 96px;
+				padding-left: 10px;
+				border: 1px solid $secondary-mercury;
+				border-radius: 5px;
+				background-color: $secondary-alabaster;
+				padding-bottom: 70px;
+				&:focus {
+					outline: none;
+					border: 1px solid $primary-black;
+				}
+
+				&--invalid {
+					outline: none;
+					border: 1px solid #d22d2d;
+				}
+				&:invalid {
+					outline: none;
+					border: 1px solid #d22d2d;
+				}
+			}
+
+			&__button {
+				@include font-family-bold;
+				height: 40px;
+				width: 100%;
+				margin-top: $addsixteen;
+				min-width: 150px;
+				padding: 0 $addsixteen * 2;
+				align-self: flex-end;
+				border-radius: 4px;
+				border: none;
+				color: $white;
+				background-color: $primary-black;
+				&:hover {
+					background-color: black;
+				}
+				@include tablet {
+					width: 30%;
 				}
 			}
 		}
 	}
-	&__header {
-		@include font-family-bold;
-		@include font-style(24px, 32px);
-		margin-top: 0;
+	&-pre {
+		@include font-family-normal;
+		border-bottom: 1px solid $secondary-mercury;
 		@include tablet {
-			@include font-style(36px, 44px);
-			width: 207px;
-			display: flex;
-			margin-bottom: 0;
-			align-items: center;
+			margin: 0 $addsixteen * 4;
 		}
 		@include desktop {
-			width: 400px;
+			margin: 0 $addsixteen * 15;
 		}
-	}
+		&__circle {
+			@include avatarMobile;
+			background-color: $secondary-mercury;
+			position: absolute;
+			left: 0;
+			top: 16px;
+			&--pictureClass {
+				@include avatarMobile;
+				position: absolute;
+				left: 0;
+				top: 16px;
+				background-color: none;
+				background-image: url(../assets/images/Mohan-muruge.jpg);
+				background-position: center;
+				background-size: cover;
+			}
+		}
+		&--topBorder {
+			margin-top: 16px;
+			border-top: 1px solid $secondary-mercury;
+		}
+		&--bottomBorder {
+			margin-bottom: 16px;
+		}
 
-	&-icons {
-		@include tablet {
-			padding-left: $withoutmobile-general-spacing;
-			display: flex;
-			align-items: center;
+		&--newBorder {
+			border-top: 1px solid $secondary-mercury;
+			border-bottom: none;
 		}
-		@include desktop {
+
+		&-top {
+			display: flex;
+			justify-content: space-between;
 			position: relative;
-			left: 240px;
-			bottom: 30px;
-		}
-		&__image {
-			margin-right: 16px;
-			@include tablet {
-				margin-right: $withoutmobile-general-spacing;
+			&__name {
+				@include font-tablet-body-style;
+				@include font-family-bold;
+				margin-left: 48px;
 			}
-			@include desktop {
-				width: 25px;
-				height: 25px;
+			&__date {
+				color: $secondary-mercury;
+				@include font-tablet-body-style;
 			}
 		}
-	}
 
-	&-containertwo {
-		@include tablet {
-			display: flex;
-			width: 100%;
-			justify-content: flex-start;
-		}
-	}
-
-	&-contacts {
-		@include tablet {
-			display: flex;
-			flex-wrap: wrap;
-			flex-direction: column;
-			min-width: 207px;
-			padding: $withoutmobile-general-spacing 0;
-		}
-		@include desktop {
-			width: 0;
-			min-width: 407px;
-		}
-
-		&__name {
-			@include font-family-bold;
+		&-bottom {
 			@include font-style(14px, 22px);
-			margin: 16px 0 0;
-			@include tablet {
-				margin: 0;
-			}
-			@include desktop {
-				@include font-style(17px, 25px);
-			}
-		}
-		&__company {
-			@include font-family-bold;
-			@include font-style(14px, 22px);
-			margin: 0 0 16px;
-			@include tablet {
-				margin-bottom: $withoutmobile-general-spacing;
-			}
-			@include desktop {
-				@include font-style(17px, 25px);
-			}
-		}
-		&__info {
-			@include font-family-normal;
-			@include font-style(13px, 18px);
-			margin: 0;
-			@include tablet {
-				@include font-style(14px, 20px);
-			}
-			@include desktop {
-				@include font-style(17px, 25px);
-			}
-		}
-		&__email {
-			@include font-family-normal;
-			@include font-style(13px, 18px);
-			display: block;
-			margin: 16px 0;
-			text-decoration: none;
-			color: $white;
-			@include tablet {
-				margin-top: $withoutmobile-general-spacing;
-				@include font-style(14px, 20px);
-			}
-			@include desktop {
-				@include font-style(17px, 25px);
-			}
-		}
-		&--padding {
-			@include tablet {
-				margin-left: $withoutmobile-general-spacing;
-			}
-		}
-	}
-	&__logo {
-		@include font-family-normal;
-		@include logo-style;
-		@include font-style(24px, 32px);
-		display: block;
-		margin-top: 64px;
-		@include tablet {
-			margin-top: 0;
-			display: none;
-		}
-		&-hidden {
-			display: none;
-			@include tablet {
-				@include font-family-normal;
-				@include logo-style;
-				@include font-style(24px, 32px);
-				display: block;
-				align-self: center;
-			}
-		}
-	}
 
-	&__copyright {
-		@include font-family-normal;
-		@include font-style(13px, 18px);
-		margin-bottom: 0;
-		@include tablet {
-			@include font-style(14px, 20px);
-			width: 100%;
+			&__loaded {
+				margin-top: 0;
+				margin-left: 48px;
+				max-width: 100%;
+				word-wrap: break-word;
+			}
 		}
-		@include desktop {
-			justify-content: flex-start;
-			@include font-style(20px, 20px);
-		}
-	}
-}
-
-@keyframes color-change {
-	0% {
-		color: paleturquoise;
-	}
-	50% {
-		color: magenta;
-	}
-	100% {
-		color: paleturquoise;
 	}
 }

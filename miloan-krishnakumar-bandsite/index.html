@@ -9,15 +9,19 @@
 	</head>
 	<body>
 		<header class="top">
-			<div class="top__logo--wrapper">
-				<a class="top__logo" href="index.html">BANDSITE</a>
-			</div>
+			<a href="./index.html" class="top__logo--wrapper"><img class="top__logo" src="./assets/Logo/Logo-bandsite.svg" alt ="logo"></a>
+				
+			</a>
 			<ul class="top__nav">
 				<li class="top__nav-item top__nav-item--current">
-					<a class="top__nav-item-link top__nav-item-link--bold">Biography</a>
+					<a
+						href="./index.html"
+						class="top__nav-item-link top__nav-item-link--bold"
+						>Biography</a
+					>
 				</li>
 				<li class="top__nav-item">
-					<a class="top__nav-item-link">Shows</a>
+					<a href="./pages/shows.html" class="top__nav-item-link">Shows</a>
 				</li>
 			</ul>
 		</header>
@@ -113,6 +117,39 @@
 					/>
 				</div>
 			</section>
+			<section class="comments">
+				<h2 class="comments__title">Join the Conversation</h2>
+				<form class="comments-form">
+					<div class="comments-form__avatar"></div>
+					<div class="comments-form-wrapper">
+						<label class="comments-form-wrapper__label" for="name"
+							>NAME:
+						</label>
+						<input
+							class="comments-form-wrapper__name"
+							id="name"
+							type="name"
+							placeholder="Enter your name"
+						/>
+						<label class="comments-form-wrapper__label" for="comment"
+							>COMMENT:
+						</label>
+						<input
+							class="comments-form-wrapper__comment"
+							id="comment"
+							type="text"
+							placeholder="Add a new comment"
+						/>
+						<button
+							type="submit"
+							class="comments-form-wrapper__button"
+							id="submitBtn"
+						>
+							COMMENT
+						</button>
+					</div>
+				</form>
+			</section>
 		</main>
 		<footer class="info">
 			<div class="info-containerone">
@@ -136,7 +173,7 @@
 						/>
 					</div>
 				</div>
-				<a href="index.html" class="info__logo-hidden">BANDSITE</a>
+				<a href="index.html" class="info__logo-hidden"><img class="top__logo" src="./assets/Logo/Logo-bandsite.svg" alt="logo"></a>
 			</div>
 
 			<div class="info-containertwo">
@@ -172,10 +209,11 @@
 					>
 				</div>
 			</div>
-			<a class="info__logo" href="index.html">BANDSITE</a>
+			<a class="info__logo" href="index.html"><img class="top__logo" src="./assets/Logo/Logo-bandsite.svg" alt="logo"></a>
 			<p class="info__copyright">
 				Copyright The Bees Knees &copy;2021 All Rights Reserved
 			</p>
 		</footer>
+		<script src="scripts/index-pages.js"></script>
 	</body>
 </html>
