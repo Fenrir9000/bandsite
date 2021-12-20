@@ -1,15 +1,22 @@
 * {
 	box-sizing: border-box;
 }
-
 body {
 	margin: 0;
 }
 
-input::placeholder {
+input::placeholder,
+textarea::placeholder {
 	@include font-family-normal;
 	color: $primary-black;
 }
+
+textarea::placeholder {
+	padding-left: 12px;
+	padding-top: 4px;
+}
+
+// Classes
 
 .top {
 	background-color: $primary-black;
@@ -69,6 +76,12 @@ input::placeholder {
 				justify-content: center;
 				padding-bottom: 0;
 			}
+			&:hover {
+				border-bottom: 3px solid $white;
+				color: $white;
+				animation: color-change 2s ease-in-out 0s infinite alternate;
+			}
+
 			&--current {
 				border-bottom: 3px solid $white;
 				color: $white;
@@ -81,11 +94,10 @@ input::placeholder {
 				&--bold {
 					font-weight: 600;
 				}
-			}
-			&:hover {
-				border-bottom: 3px solid $white;
-				color: $white;
-				animation: color-change 2s ease-in-out 0s infinite alternate;
+				&:hover {
+					color: $white;
+					animation: color-change 2s ease-in-out 0s infinite alternate;
+				}
 			}
 		}
 	}
@@ -101,7 +113,7 @@ input::placeholder {
 		padding: 48px $withoutmobile-general-spacing $withoutmobile-general-spacing;
 	}
 	@include desktop {
-		padding: $withoutmobile-general-spacing $desktop-side-spacing;
+		padding: 48px $desktop-side-spacing;
 		margin: 0 auto;
 	}
 
@@ -132,9 +144,6 @@ input::placeholder {
 			margin-bottom: 0;
 			align-items: center;
 		}
-		@include desktop {
-			width: 400px;
-		}
 	}
 
 	&-icons {
@@ -143,19 +152,10 @@ input::placeholder {
 			display: flex;
 			align-items: center;
 		}
-		@include desktop {
-			position: relative;
-			left: 240px;
-			bottom: 30px;
-		}
 		&__image {
-			margin-right: 16px;
+			margin-right: $addsixteen * 1.7;
 			@include tablet {
-				margin-right: $withoutmobile-general-spacing;
-			}
-			@include desktop {
-				width: 25px;
-				height: 25px;
+				margin-right: $addsixteen * 2;
 			}
 		}
 	}
@@ -174,13 +174,8 @@ input::placeholder {
 			flex-wrap: wrap;
 			flex-direction: column;
 			min-width: 207px;
-			padding: $withoutmobile-general-spacing 0;
+			padding: $addsixteen * 2 0;
 		}
-		@include desktop {
-			width: 0;
-			min-width: 407px;
-		}
-
 		&__name {
 			@include font-family-bold;
 			@include font-style(14px, 22px);
@@ -188,19 +183,13 @@ input::placeholder {
 			@include tablet {
 				margin: 0;
 			}
-			@include desktop {
-				@include font-style(17px, 25px);
-			}
 		}
 		&__company {
 			@include font-family-bold;
 			@include font-style(14px, 22px);
-			margin: 0 0 16px;
+			margin: 0 0 $addsixteen * 1.5;
 			@include tablet {
-				margin-bottom: $withoutmobile-general-spacing;
-			}
-			@include desktop {
-				@include font-style(17px, 25px);
+				margin-bottom: $addsixteen * 1.5;
 			}
 		}
 		&__info {
@@ -210,23 +199,17 @@ input::placeholder {
 			@include tablet {
 				@include font-style(14px, 20px);
 			}
-			@include desktop {
-				@include font-style(17px, 25px);
-			}
 		}
 		&__email {
 			@include font-family-normal;
 			@include font-style(13px, 18px);
 			display: block;
-			margin: 16px 0;
+			margin: $addsixteen * 1.3 0;
 			text-decoration: none;
 			color: $white;
 			@include tablet {
-				margin-top: $withoutmobile-general-spacing;
+				margin-top: $addsixteen * 1.7;
 				@include font-style(14px, 20px);
-			}
-			@include desktop {
-				@include font-style(17px, 25px);
 			}
 		}
 		&--padding {
@@ -264,10 +247,10 @@ input::placeholder {
 		@include tablet {
 			@include font-style(14px, 20px);
 			width: 100%;
+			margin-top: 0;
 		}
 		@include desktop {
 			justify-content: flex-start;
-			@include font-style(20px, 20px);
 		}
 	}
 }

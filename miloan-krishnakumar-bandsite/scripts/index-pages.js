@@ -1,28 +1,4 @@
-const commentsLoaded = [
-	{
-		name: 'Connor Walton',
-		date: '02/17/2021',
-		comment:
-			'This is art. This is inexplicable magic expressed in the purest way, everything that makes up this majestic work deserves reverence. Let us appreciate this for what it is and what it contains.',
-		class: 'comments-pre--topBorder',
-		pictureClass: 'comments-pre__circle',
-	},
-	{
-		name: 'Emilie Beach',
-		date: '01/09/2021',
-		comment:
-			'I feel blessed to have seen them in person. What a show! They were just perfection. If there was one day of my life I could relive, this would be it. What an incredible day.',
-		pictureClass: 'comments-pre__circle',
-	},
-	{
-		name: 'Miles Acosta',
-		date: ' 12/20/2020',
-		comment:
-			"I can't stop listening. Every time I hear one of their songs - the vocals - it gives me goosebumps. Shivers straight down my spine. What a beautiful expression of creativity. Can't get enough.",
-		class: 'comments-pre--bottomBorder',
-		pictureClass: 'comments-pre__circle',
-	},
-];
+let body = document.querySelector('body');
 
 const makeElement = (elementName, className) => {
 	let varName = document.createElement(elementName);
@@ -32,50 +8,75 @@ const makeElement = (elementName, className) => {
 
 let section = makeElement('section', 'comments');
 
-function displayComment(arrayofObjects) {
+const COMMENT_URL = 'https://project-1-api.herokuapp.com/comments';
+const API_KEY = 'b1b1581c-5ab3-49df-a797-f820a73554ad';
+
+const displayComment = () => {
+	axios
+		.get(`${COMMENT_URL}?api_key=${API_KEY}`)
+		.then((result) => {
+			const commentsArray = result.data;
+			commentsArray.sort((a, b) => {
+				return a.timestamp - b.timestamp;
+			});
+			commentsArray.forEach((comment) => {
+				if (
+					comment.name === 'Connor Walton' ||
+					comment.name === 'Emilie Beach' ||
+					comment.name === 'Miles Acosta'
+				) {
+					innerDisplayFirst(comment, 'new', '');
+				} else {
+					innerDisplayFirst(comment, 'new', '--pictureClass');
+				}
+			});
+
+			let nodes = document.querySelectorAll('.comments-pre');
+			let lastNode = nodes[nodes.length - 1];
+			lastNode.classList.add('comments-pre--bottomBorder');
+			lastNode.classList.remove('comments-pre--newBorder');
+		})
+		.catch((error) => console.log(error));
+	body.insertBefore(section, body.children[2]);
+};
+
+displayComment();
+
+function innerDisplayFirst(comment, position, picture) {
 	let outerDiv = makeElement('div', 'comments-pre');
-	outerDiv.classList.add(arrayofObjects.class);
+	outerDiv.classList.add(`comments-pre--${position}Border`);
 
 	let innerDiv = makeElement('div', 'comments-pre-top');
 	outerDiv.append(innerDiv);
 
-	let innerCircle = makeElement('div', arrayofObjects.pictureClass);
+	let innerCircle = makeElement('div', `comments-pre__circle${picture}`);
 	innerDiv.append(innerCircle);
 
 	let innerP = makeElement('p', 'comments-pre-top__name');
-	innerP.innerText = arrayofObjects.name;
+	innerP.innerText = comment.name;
 	innerDiv.append(innerP);
 
 	let innerP2 = makeElement('p', 'comments-pre-top__date');
-	innerP2.innerText = arrayofObjects.date;
+	let dateVar = new Date(Number(comment.timestamp));
+	let dateFormatted =
+		('0' + (dateVar.getMonth() + 1)).slice(-2) +
+		'/' +
+		('0' + dateVar.getDate()).slice(-2) +
+		'/' +
+		dateVar.getFullYear();
+	innerP2.innerText = dateFormatted;
 	innerDiv.append(innerP2);
 
 	let innerP3 = makeElement('p', 'comments-pre-bottom__loaded');
-	innerP3.innerText = arrayofObjects.comment;
+	innerP3.innerText = comment.comment;
 	outerDiv.append(innerP3);
 
 	section.appendChild(outerDiv);
+
+	section.insertBefore(outerDiv, section.children[0]);
+
 	return outerDiv;
 }
-
-let body = document.querySelector('body');
-
-body.addEventListener('click', (e) => {
-	let nameField = document.getElementById('name');
-	let commentField = document.getElementById('comment');
-
-	nameField.removeAttribute('required');
-	commentField.removeAttribute('required');
-});
-
-function loadHtml() {
-	for (let i = 0; i < commentsLoaded.length; i++) {
-		displayComment(commentsLoaded[i]);
-	}
-	body.insertBefore(section, body.children[2]);
-}
-
-loadHtml();
 
 let form = document.querySelector('.comments-form');
 
@@ -90,34 +91,34 @@ form.addEventListener('submit', (event) => {
 		commentField.setAttribute('required', 'required');
 		return;
 	} else {
-		section.innerHTML = '';
-
+		document
+			.querySelectorAll('.comments-pre')
+			.forEach((event) => event.remove());
 		let userName = nameField.value;
-
 		let userComment = commentField.value;
 
-		let todayVar = new Date();
-		let date =
-			(todayVar.getMonth() + 1) +
-			'/' +
-			todayVar.getDate() +
-			'/' +
-			todayVar.getFullYear();
-
-		commentsLoaded.unshift({
+		const newComment = {
 			name: userName,
-			date: date,
 			comment: userComment,
-			class: 'comments-pre--newBorder',
-			pictureClass: 'comments-pre__circle--pictureClass',
-			exactTime: Date.now(),
-		});
-		nameField.removeAttribute('required');
-		commentField.removeAttribute('required');
+		};
 
-		loadHtml();
+		axios
+			.post(`${COMMENT_URL}?api_key=${API_KEY}`, newComment)
+			.then((response) => {
+				nameField.removeAttribute('required');
+				commentField.removeAttribute('required');
+				displayComment();
+			})
+			.catch((error) => console.log(error));
+
 		form.reset();
 	}
 });
 
+body.addEventListener('click', (e) => {
+	let nameField = document.getElementById('name');
+	let commentField = document.getElementById('comment');
 
+	nameField.removeAttribute('required');
+	commentField.removeAttribute('required');
+});

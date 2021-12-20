@@ -1,6 +1,6 @@
-@use './partials/typography' as *;
-@use './partials/variables' as *;
-@use './partials/mixins' as *;
+@import './partials/variables';
+@import './partials/typography';
+@import './partials/mixins';
 
 @import './partials/global';
 
@@ -32,7 +32,8 @@
 		}
 		@include desktop {
 			@include font-style(80px, 68px);
-			padding: $withoutmobile-general-spacing $desktop-side-spacing-title;
+			padding: $withoutmobile-general-spacing $desktop-side-spacing;
+			padding-top: 0;
 		}
 	}
 
@@ -115,7 +116,6 @@
 
 			@include desktop {
 				margin: 0 80px;
-				@include font-style(35px, 40px);
 			}
 			&--size {
 				@include tablet {
@@ -153,7 +153,6 @@
 			padding-left: $withoutmobile-general-spacing;
 			@include desktop {
 				padding-left: 80px;
-				@include font-style(20px, 30px);
 			}
 		}
 		&--paraTwo {
@@ -163,7 +162,6 @@
 			}
 			@include desktop {
 				padding-right: 80px;
-				@include font-style(20px, 30px);
 			}
 		}
 	}
@@ -222,13 +220,15 @@
 			padding-bottom: 2%;
 			margin-bottom: 0;
 		}
+
+		&:hover {
+			filter: grayscale(0%);
+		}
+
 		&--bottom {
 			@include tablet {
 				padding-bottom: 0;
 			}
-		}
-		&:hover {
-			filter: grayscale(0%);
 		}
 	}
 }
@@ -261,11 +261,11 @@
 		}
 
 		&:focus-within {
-			transform: scale(1.03);
+			transform: scale(1.01);
 		}
 		&__avatar {
 			@include avatarMobile {
-				background-image: url(../assets/Images/Mohan-muruge.jpg);
+				background-image: url(../assets/images/Mohan-muruge.jpg);
 				background-position: center;
 				background-size: cover;
 				position: absolute;
@@ -318,12 +318,11 @@
 				}
 			}
 			&__comment {
+				resize: none;
 				height: 96px;
-				padding-left: 10px;
 				border: 1px solid $secondary-mercury;
 				border-radius: 5px;
 				background-color: $secondary-alabaster;
-				padding-bottom: 70px;
 				&:focus {
 					outline: none;
 					border: 1px solid $primary-black;
@@ -341,18 +340,19 @@
 
 			&__button {
 				@include font-family-bold;
+				border: none;
 				height: 40px;
 				width: 100%;
+				background-color: $primary-black;
+				border-radius: 4px;
+				color: $white;
+
 				margin-top: $addsixteen;
 				min-width: 150px;
 				padding: 0 $addsixteen * 2;
 				align-self: flex-end;
-				border-radius: 4px;
-				border: none;
-				color: $white;
-				background-color: $primary-black;
 				&:hover {
-					background-color: black;
+					background-color: $secondary-darkblack;
 				}
 				@include tablet {
 					width: 30%;
@@ -391,6 +391,7 @@
 			border-top: 1px solid $secondary-mercury;
 		}
 		&--bottomBorder {
+			border-top: 1px solid $secondary-mercury;
 			margin-bottom: 16px;
 		}
 
@@ -418,6 +419,7 @@
 			@include font-style(14px, 22px);
 
 			&__loaded {
+				min-height: 32px;
 				margin-top: 0;
 				margin-left: 48px;
 				max-width: 100%;

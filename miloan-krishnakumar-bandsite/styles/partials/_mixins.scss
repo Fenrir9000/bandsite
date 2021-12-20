@@ -1,5 +1,5 @@
-@use './typography' as *;
-@use './variables' as *;
+@import './typography';
+@import './variables';
 
 @mixin tablet {
 	@media (min-width: $tablet-change) {

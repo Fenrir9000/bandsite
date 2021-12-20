@@ -4,14 +4,18 @@
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+		<title>BandSite</title>
 		<link rel="stylesheet" href="./styles/main.css" />
-		<title>Bandsite</title>
 	</head>
 	<body>
 		<header class="top">
-			<a href="./index.html" class="top__logo--wrapper"><img class="top__logo" src="./assets/Logo/Logo-bandsite.svg" alt ="logo"></a>
-				
-			</a>
+			<a href="./index.html" class="top__logo--wrapper"
+				><img
+					class="top__logo"
+					src="./assets/logos/Logo-bandsite.svg"
+					alt="bandsite logo image"
+			/></a>
 			<ul class="top__nav">
 				<li class="top__nav-item top__nav-item--current">
 					<a
@@ -25,22 +29,25 @@
 				</li>
 			</ul>
 		</header>
+
 		<main class="main">
 			<section class="bee">
 				<h2 class="bee__title">The Bees Knees</h2>
 			</section>
+
 			<section class="musician">
 				<div class="musician-one">
 					<h2 class="musician__title">About the Musicians</h2>
 					<div class="musician__img"></div>
 					<p class="musician__quote">
-						“We push each other to be the best. It’s not uncommon for one <br />
-						of us to say ‘this needs to be better, back to the drawing board’”
+						“We push each other to be the best. It’s not uncommon for one of us
+						to say ‘this needs to be better, back to the drawing board’”
 					</p>
 					<p class="musician__quote musician__quote--size">
 						- Bryan Teddy, lead vocalist of The Bees Knees
 					</p>
 				</div>
+
 				<div class="musician-two">
 					<h3 class="musician__subtitle">The Bees Knees</h3>
 					<p class="musician__content">
@@ -67,56 +74,58 @@
 					</p>
 				</div>
 			</section>
+
 			<section class="photo">
 				<h2 class="photo__title">Photo Gallery</h2>
 				<div class="photo-wrapper">
 					<img
 						class="photo__image"
 						src="assets/images/Photo-gallery-1.jpg"
-						alt="gallery-1"
+						alt="gallery image one"
 					/>
 					<img
 						class="photo__image"
 						src="assets/images/Photo-gallery-2.jpg"
-						alt="gallery-2"
+						alt="gallery image two"
 					/>
 					<img
 						class="photo__image"
 						src="assets/images/Photo-gallery-3.jpg"
-						alt="gallery-3"
+						alt="gallery image three"
 					/>
 					<img
 						class="photo__image"
 						src="assets/images/Photo-gallery-4.jpg"
-						alt="gallery-4"
+						alt="gallery image four"
 					/>
 					<img
 						class="photo__image"
 						src="assets/images/Photo-gallery-5.jpg"
-						alt="gallery-5"
+						alt="gallery image five"
 					/>
 					<img
 						class="photo__image"
 						src="assets/images/Photo-gallery-6.jpg"
-						alt="gallery-6"
+						alt="gallery image six"
 					/>
 					<img
 						class="photo__image photo__image--bottom"
 						src="assets/images/Photo-gallery-7.jpg"
-						alt="gallery-7"
+						alt="gallery image seven"
 					/>
 					<img
 						class="photo__image photo__image--bottom"
 						src="assets/images/Photo-gallery-8.jpg"
-						alt="gallery-8"
+						alt="gallery image eight"
 					/>
 					<img
 						class="photo__image photo__image--bottom"
 						src="assets/images/Photo-gallery-9.jpg"
-						alt="gallery-9"
+						alt="gallery image nine"
 					/>
 				</div>
 			</section>
+
 			<section class="comments">
 				<h2 class="comments__title">Join the Conversation</h2>
 				<form class="comments-form">
@@ -134,12 +143,13 @@
 						<label class="comments-form-wrapper__label" for="comment"
 							>COMMENT:
 						</label>
-						<input
+						<textarea
 							class="comments-form-wrapper__comment"
 							id="comment"
 							type="text"
 							placeholder="Add a new comment"
-						/>
+						></textarea>
+
 						<button
 							type="submit"
 							class="comments-form-wrapper__button"
@@ -151,29 +161,35 @@
 				</form>
 			</section>
 		</main>
+
 		<footer class="info">
 			<div class="info-containerone">
-				<div class="info-blockone-left">
+				<div class="info-containerone-left">
 					<h2 class="info__header">Get in Touch</h2>
 					<div class="info-icons">
 						<img
 							class="info-icons__image"
 							src="assets/icons/SVG/Icon-instagram.svg"
-							alt="instagram"
+							alt="instagram icon"
 						/>
 						<img
 							class="info-icons__image"
 							src="assets/icons/SVG/Icon-facebook.svg"
-							alt="facebook"
+							alt="facebook icon"
 						/>
 						<img
 							class="info-icons__image"
 							src="assets/icons/SVG/Icon-twitter.svg"
-							alt="twitter"
+							alt="twitter icon"
 						/>
 					</div>
 				</div>
-				<a href="index.html" class="info__logo-hidden"><img class="top__logo" src="./assets/Logo/Logo-bandsite.svg" alt="logo"></a>
+				<a href="index.html" class="info__logo-hidden"
+					><img
+						class="top__logo"
+						src="./assets/logos/Logo-bandsite.svg"
+						alt="bandsite logo"
+				/></a>
 			</div>
 
 			<div class="info-containertwo">
@@ -209,7 +225,12 @@
 					>
 				</div>
 			</div>
-			<a class="info__logo" href="index.html"><img class="top__logo" src="./assets/Logo/Logo-bandsite.svg" alt="logo"></a>
+			<a class="info__logo" href="index.html"
+				><img
+					class="top__logo"
+					src="./assets/logos/Logo-bandsite.svg"
+					alt="bandsite logo"
+			/></a>
 			<p class="info__copyright">
 				Copyright The Bees Knees &copy;2021 All Rights Reserved
 			</p>
